@@ -14,9 +14,9 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: "Francis King'oo"
+title: Francis King'oo
 
-tagline: "Software Developer | Cybersecurity Analyst | Pentester| Microsoft Dynamics 365 BC | Web & ERP Solutions"
+tagline: Software Developer | Cybersecurity Analyst | Pentester| Microsoft Dynamics 365 BC | Web & ERP Solutions
 
 description: >- # used by seo meta and the atom feed
  My Tech Journey and Projects.
