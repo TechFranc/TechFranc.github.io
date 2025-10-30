@@ -1,4 +1,643 @@
----
-layout: home
-# Index page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francis Kingoo - Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        #home {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid var(--white);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .resume-section {
+            background: var(--light-bg);
+        }
+
+        .resume-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .resume-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .resume-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .resume-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--light-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .lab-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .lab-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .lab-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .lab-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .lab-section ul {
+            margin-left: 1.5rem;
+        }
+
+        .lab-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">FK</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#labs">Lab Challenges</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-photo">👤</div>
+                <h1>Francis Kingoo</h1>
+                <p class="tagline">Cybersecurity Enthusiast | Penetration Tester | Security Researcher</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <p class="section-subtitle">My professional journey and qualifications</p>
+
+            <div class="resume-grid">
+                <div class="resume-card">
+                    <h3>🎓 Education</h3>
+                    <div class="resume-item">
+                        <h4>Bachelor of Science in Computer Science</h4>
+                        <p class="meta">University Name | 2020 - 2024</p>
+                        <p>Focus on Cybersecurity, Network Security, and Ethical Hacking. Graduated with honors.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Relevant Coursework</h4>
+                        <p>Network Security, Cryptography, Digital Forensics, Malware Analysis, Secure Software Development</p>
+                    </div>
+                </div>
+
+                <div class="resume-card">
+                    <h3>💼 Work Experience</h3>
+                    <div class="resume-item">
+                        <h4>Security Analyst Intern</h4>
+                        <p class="meta">Tech Company | June 2023 - August 2023</p>
+                        <p>Conducted vulnerability assessments, performed penetration testing on web applications, and contributed to security incident response procedures.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>IT Support Specialist</h4>
+                        <p class="meta">Local Business | January 2022 - May 2023</p>
+                        <p>Provided technical support, implemented security best practices, and maintained network infrastructure.</p>
+                    </div>
+                </div>
+
+                <div class="resume-card">
+                    <h3>📜 Certifications</h3>
+                    <div class="resume-item">
+                        <h4>CompTIA Security+</h4>
+                        <p class="meta">Issued: 2023</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Certified Ethical Hacker (CEH)</h4>
+                        <p class="meta">In Progress | Expected: 2024</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>OWASP Top 10 Certification</h4>
+                        <p class="meta">Issued: 2023</p>
+                    </div>
+                </div>
+
+                <div class="resume-card">
+                    <h3>🛠️ Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">Bash</div>
+                        <div class="skill-tag">Linux</div>
+                        <div class="skill-tag">Metasploit</div>
+                        <div class="skill-tag">Burp Suite</div>
+                        <div class="skill-tag">Nmap</div>
+                        <div class="skill-tag">Wireshark</div>
+                        <div class="skill-tag">SQL</div>
+                        <div class="skill-tag">Git</div>
+                        <div class="skill-tag">Docker</div>
+                        <div class="skill-tag">SIEM</div>
+                        <div class="skill-tag">IDS/IPS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Showcasing my technical work and innovations</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🔐</div>
+                    <div class="project-content">
+                        <h3>Vulnerability Scanner Tool</h3>
+                        <p>Developed a custom vulnerability scanner that automates security assessments for web applications. The tool identifies common vulnerabilities including SQL injection, XSS, and CSRF.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Requests</span>
+                            <span class="tech-tag">BeautifulSoup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🌐</div>
+                    <div class="project-content">
+                        <h3>Network Traffic Analyzer</h3>
+                        <p>Built a network monitoring tool that captures and analyzes network packets in real-time. Implemented features for detecting suspicious activities and generating security alerts.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scapy</span>
+                            <span class="tech-tag">Tkinter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🛡️</div>
+                    <div class="project-content">
+                        <h3>Secure File Encryption System</h3>
+                        <p>Created a file encryption application using AES-256 encryption. Features include secure key management, file integrity verification, and a user-friendly interface.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="labs" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">Lab Challenges</h2>
+            <p class="section-subtitle">CTF writeups and security challenge solutions</p>
+
+            <div class="lab-card">
+                <h3>SQL Injection - Authentication Bypass</h3>
+                
+                <div class="lab-section">
+                    <h4>Problem Statement:</h4>
+                    <p>A vulnerable web application with a login form that doesn't properly sanitize user input. The goal was to bypass authentication and gain admin access.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Approach:</h4>
+                    <p>Identified the vulnerability by testing various SQL injection payloads in the login form. Used boolean-based blind SQL injection techniques to extract information about the database structure.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Tools Used:</h4>
+                    <ul>
+                        <li>Burp Suite - For intercepting and modifying requests</li>
+                        <li>SQLMap - For automated SQL injection testing</li>
+                        <li>Python - For creating custom exploitation scripts</li>
+                    </ul>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Key Lessons Learned:</h4>
+                    <ul>
+                        <li>Importance of input validation and parameterized queries</li>
+                        <li>Understanding SQL injection attack vectors and defensive measures</li>
+                        <li>Proper implementation of authentication mechanisms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h3>Cross-Site Scripting (XSS) - DOM-Based Attack</h3>
+                
+                <div class="lab-section">
+                    <h4>Problem Statement:</h4>
+                    <p>Exploited a DOM-based XSS vulnerability in a web application to steal user cookies and demonstrate the impact of client-side vulnerabilities.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Approach:</h4>
+                    <p>Analyzed the JavaScript code to identify unsafe DOM manipulation. Crafted a payload that executed in the context of the victim's browser and exfiltrated sensitive data.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Tools Used:</h4>
+                    <ul>
+                        <li>Browser Developer Tools - For analyzing client-side code</li>
+                        <li>XSS Hunter - For capturing XSS payloads</li>
+                        <li>BeEF Framework - For demonstrating post-exploitation capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Key Lessons Learned:</h4>
+                    <ul>
+                        <li>Client-side validation alone is insufficient for security</li>
+                        <li>Proper output encoding and Content Security Policy implementation</li>
+                        <li>The importance of secure coding practices in JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h3>Privilege Escalation - Linux Environment</h3>
+                
+                <div class="lab-section">
+                    <h4>Problem Statement:</h4>
+                    <p>Gained initial access to a Linux system with limited privileges. The challenge was to escalate privileges to root access.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Approach:</h4>
+                    <p>Conducted thorough enumeration of the system, identifying misconfigured SUID binaries and exploitable kernel vulnerabilities. Successfully escalated to root privileges.</p>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Tools Used:</h4>
+                    <ul>
+                        <li>LinPEAS - For automated Linux enumeration</li>
+                        <li>GTFOBins - For identifying exploitable binaries</li>
+                        <li>Custom Shell Scripts - For automation and exploitation</li>
+                    </ul>
+                </div>
+
+                <div class="lab-section">
+                    <h4>Key Lessons Learned:</h4>
+                    <ul>
+                        <li>Systematic enumeration is crucial for privilege escalation</li>
+                        <li>Understanding Linux permissions and SUID/SGID binaries</li>
+                        <li>Importance of keeping systems patched and properly configured</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's connect and collaborate</p>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:francis.kingoo@example.com">francis.kingoo@example.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/franciskingoo" target="_blank">linkedin.com/in/franciskingoo</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/techfranc" target="_blank">github.com/techfranc</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+254700000000">+254 700 000 000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Francis Kingoo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
